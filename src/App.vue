@@ -1,15 +1,41 @@
 <template>
   <div id="app">
-   
+     <TabBar/>
+    <keep-alive>
+    <router-view></router-view>
+    </keep-alive>
+    <Footer/>
   </div>
 </template>
-
 <script>
+import TabBar from "@common/components/tabBar";
+import Footer from "@common/components/Footer";
 export default {
-  
-}
+  name: "App",
+  components: {
+    TabBar,
+    Footer
+  }
+};
 </script>
 
-<style lang="scss">
+<style>
+ * {
+        padding: 0;
+        margin: 0;
+    }
 
+    a {
+        text-decoration: none;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+  #app{
+    height: 100%;
+    width: 100%
+  }
+ *{overflow-x: hidden;}
 </style>

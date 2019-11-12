@@ -1,27 +1,34 @@
 import axios from "axios";
-import { promised } from "q";
-const server=axios.create({
+
+const server = axios.create({
     timeout:5000,
-    withCredentials:true,
+    //baseUrl:"",
+    withCredentials:true
 })
 
-//请求拦截
-server.interceptors.request.ues((config)=>{
-    if(config.mothod=="get"){
-        config.params={...config.data};
+
+//请求的拦截
+server.interceptors.request.use((config)=>{
+    if(config.method == "get"){
+        config.params = {...config.data};
     }
 
-    // config.header["content-type"]="application.json"
-},(err)=>{
-    promised.reject(err);
+    return config;
+    //config.headers["content-type"] = "application/json"
 
+},(err)=>{
+    return Promise.reject(err)
 })
+
 
 //响应的拦截
-server.interceptors.reponse.ues((res)=>{
-    if(res.status==200){
+server.interceptors.response.use((res)=>{
+    if(res.status == 200){
         return res.data;
     }
+},(err)=>{
+    return Promise.reject(err)
 })
+
 
 export default server;
