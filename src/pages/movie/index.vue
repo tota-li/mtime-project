@@ -12,13 +12,13 @@
     </div>
 
     <div class="main">
-      <div class="main_more">
+      <router-link to="/hotlist" class="main_more">
         <b>正在热映({{comimgList.length}})</b>
         <img
           src="https://static1.mtime.cn/html5/20191022151144/images/2014/i-tmore.png"
           style="transform:rotate(270deg);"
         />
-      </div>
+      </router-link>
       <div class="movielist">
 
         <a to="/movie/" v-for="item in comimgList.slice(0,8)" :key="item.id">
@@ -54,15 +54,14 @@
 
     <div class="news">
       <h3>今日热点</h3>
-     <News />
+     <News :newslist="newslist" />
 
   </div>
   </div>
 </template>
 
 <script>
-import { movienowApi } from "@api/movie";
-import { newsnowApi } from "@api/movie";
+import { movienowApi,newsnowApi } from "@api/movie";
 import News from  "@compoents/indexAd";
 export default {
   components:{
@@ -72,7 +71,8 @@ export default {
   data() {
     return {
       comimgList: [],
-      comingmove:""
+      comingmove:"",
+      newslist:[]
     };
   },
   created() {
@@ -82,10 +82,12 @@ export default {
   async created() {
     let data = await movienowApi();
     let news = await newsnowApi();
-    console.log(data);
-    console.log(news);
+    // console.log(data);
+    
     this.comimgList = data.ms;
     this.comingmove = data.totalComingMovie;
+    this.newslist = news.data.list;
+    console.log(this.newslist);
   }
 };
 </script>

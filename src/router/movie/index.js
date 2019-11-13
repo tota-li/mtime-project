@@ -3,6 +3,6 @@ export default {
     component:_=>import("@pages/movie"),
     name:"movie",
     meta:{
-        flag:true
+        flag:false
     }
 }
