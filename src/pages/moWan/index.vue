@@ -1,9 +1,9 @@
 <template>
     <div class="mowan"> 
         <div class="nav">
-			<span>
+			<v-touch @tap="handleBack()" class="bc"><span>
 				&lt;
-			</span>
+			</span></v-touch>
 			<div>
 				<input class="input" type="text" placeholder="正版电影周边">
 					
@@ -55,102 +55,19 @@
 
 		<div class="content">
 			<ul>
-				<li>
-					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F10%2F08%2F135733.84725048_294X294X4.jpg&width=0&height=0&clipType=4"/>
+				<li v-for="(item,index) in goodsList" :key=index>
+					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >{{item.iconText}}</i>
+					<img :src="item.imageSrc"/>
 					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
+						<em>{{item.goodsTip}}</em>
+						{{item.name}}
 					
 					<br/>
 					<strong>
-						￥79
+						￥{{item.minSalePrice | numFilter}}
 					</strong></p>
 				</li>
-				<li>
-					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F25%2F104503.76942417_294X294X4.jpg&width=0&height=0&clipType=44"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br/>
-					<strong>
-						￥68
-					</strong></p>
-				</li>
-				<li>
-					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F10%2F08%2F135733.84725048_294X294X4.jpg&width=0&height=0&clipType=4"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br/>
-					<strong>
-						￥79
-					</strong></p>
-				</li>
-				<li>
-					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F25%2F104503.76942417_294X294X4.jpg&width=0&height=0&clipType=44"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br/>
-					<strong>
-						￥68
-					</strong></p>
-				</li>
-				<li>
-					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F10%2F08%2F135733.84725048_294X294X4.jpg&width=0&height=0&clipType=4"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br/>
-					<strong>
-						￥79
-					</strong></p>
-				</li>
-				<li>
-					<!--<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>-->
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F25%2F104503.76942417_294X294X4.jpg&width=0&height=0&clipType=44"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br/>
-				<strong>
-						￥68
-					</strong></p>
-				</li>
-				<li>
-					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F10%2F08%2F135733.84725048_294X294X4.jpg&width=0&height=0&clipType=4"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br/>
-					<strong>
-						￥79
-					</strong></p>
-				</li>
-				<li>
-					<!--<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >新品</i>-->
-					<img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F09%2F25%2F104503.76942417_294X294X4.jpg&width=0&height=0&clipType=44"/>
-					<p>
-						<em>自营</em>
-						"MightyJaxx海绵宝宝系列"
-					
-					<br />
-					<strong>
-						￥68
-					</strong></p>
-				</li>
+			
 			</ul>
 			
 		</div>
@@ -158,8 +75,34 @@
 </template>
 
 <script>
+import {mowanlistApi} from "@api/shopping"
     export default {
-        name:"mowan"
+		name:"mowan",
+		data(){
+			return{
+				goodsList:[]
+			}
+		},
+		async created(){
+			let data =await mowanlistApi();
+			console.log(data);
+			this.goodsList=data.content.goods.goodsList
+			console.log(this.goodsList)
+		
+		},
+		filters:{
+		numFilter (value) {
+    	// 截取当前数据到小数点后两位
+    	let realVal =value/100
+    	return realVal
+  }
+
+		},
+		methods:{
+			handleBack(){
+				this.$router.back();
+			}
+		}
     }
 </script>
 
@@ -200,6 +143,10 @@
     background-size: auto 26px;
     width: 25%;
     height: 100%;color: #eee;
+			}
+			.nav .bc{
+				width: 15%;
+				margin: 0;
 			}
 			.nav span{
 				margin-left:10px;
@@ -318,7 +265,8 @@
 				width: 100%;
 			}
 			.content ul li p{
-				font-size: 18px;
+				
+				font-size: 14px;
 				background: #FFFFFF;
 			}
 			.content ul li em{
@@ -330,6 +278,7 @@
 				margin-right: 4px;
 				margin-left: 3px;
 				font-style: normal;
+				text-align: center
 			}
 			.content ul li strong{
 				font-weight: normal;
