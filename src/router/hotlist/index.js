@@ -3,6 +3,6 @@ export default {
     component:_=>import("@pages/hotlist"),
     name:"hotlist",
     meta:{
-        flag:true
+        flag:false
     }
 }

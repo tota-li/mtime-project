@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-     <TabBar v-if="!$route.meta.flag"/>
+     <TabBar v-if="$route.meta.flag"/>
     <keep-alive >
     <router-view></router-view>
     </keep-alive>
