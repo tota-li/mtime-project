@@ -1,7 +1,7 @@
 <template>
   <div id="app">
      <TabBar v-if="$route.meta.flag"/>
-    <keep-alive >
+    <keep-alive exclude="moviepages">
     <router-view></router-view>
     </keep-alive>
     <Footer/>

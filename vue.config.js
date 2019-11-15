@@ -10,7 +10,11 @@ module.exports={
             "/article":{
                 target:"https://content-api-m.mtime.cn",
                 changeOrigin:true
-            }
+            },
+            "/api":{
+                target:"https://ticket-m.mtime.cn",
+                changeOrigin:true
+            },
         }
     },
     configureWebpack:{
