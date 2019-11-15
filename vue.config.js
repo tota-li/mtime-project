@@ -1,10 +1,14 @@
-const path= require ("path");
+const path=require("path")
 
 module.exports={
-     devServer:{
-       proxy:{
+    devServer:{
+    proxy:{
             "/Service":{
                 target:"https://m.mtime.cn",
+                changeOrigin:true
+            },
+            "/article":{
+                target:"https://content-api-m.mtime.cn",
                 changeOrigin:true
             }
         }

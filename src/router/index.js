@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import index from "./indexs"
-import ticket from "./ticket"
+import movie from './movie'
+import tickets from './tickets'
+import shop from './shop'
+import mine from './mine'
+import hotlist from './hotlist'
+import future from './future'
+import moviepages from './moivepage'
 import shopping from "./shopping"
-import mine from "./mine"
 import mowan from "./mowan"
 import shuma from "./shuma"
 import fushi from "./fushi"
@@ -15,31 +19,22 @@ import xingzhan from "./xingzhan"
 
 Vue.use(VueRouter);
 
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'home',
-//     component: Home
-//   },
-//   {
-//     path: '/about',
-//     name: 'about',
-//     // route level code-splitting
-//     // this generates a separate chunk (about.[hash].js) for this route
-//     // which is lazy-loaded when the route is visited.
-//     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-//   }
-// ]
+
+Vue.use(VueRouter)
 
 const router = new VueRouter({
-  mode:"hash",
-  routes:[
+  mode: "hash",
+  routes: [
     {
       path:"/",
-      redirect:"/index"
+      redirect:"/movie"
     },
-    index,
-    ticket,
+    movie,
+    tickets,
+    shop,
+    mine,
+    hotlist,
+    future,
     shopping,
     mowan,
     mine,
@@ -52,5 +47,9 @@ const router = new VueRouter({
     xingzhan
   ]
 })
+
+// const router = new VueRouter({
+//   router
+// })
 
 export default router
