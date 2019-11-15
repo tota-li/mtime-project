@@ -15,3 +15,22 @@ export const newsnowApi =()=> http({
     data:{
     }
 })   
+
+export const moivefirst =()=> http({
+    method:"get",
+    url:"/Service/callback.mi/Showtime/LocationMovies.api",
+    data:{
+        locationId:366,
+        t:2019111410462162893
+    }
+
+})   
+export const moivefuture =()=> http({
+    method:"get",
+    url:"/Service/callback.mi/Movie/MovieComingNew.api",
+    data:{
+        locationId:366,
+        t:2019111421561692493
+    }
+
+})   

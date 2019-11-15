@@ -37,7 +37,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .title {
   background: #1c2635;
   height: 3.625rem;

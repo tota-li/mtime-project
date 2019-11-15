@@ -8,7 +8,7 @@
     </div>
 
 
-<div v-for="item in newslist">
+<div v-for="item in newslist" :key='item'>
 
     <div class="bo" :key="item.id" v-if="item.styleType==2">
       <div class="img_box">
@@ -66,6 +66,8 @@
     </div>
 
     </div>
+
+</div>
 </template>
 
 <script>

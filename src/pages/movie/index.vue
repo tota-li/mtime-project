@@ -21,21 +21,21 @@
       </router-link>
       <div class="movielist">
 
-        <a to="/movie/" v-for="item in comimgList.slice(0,8)" :key="item.id">
+        <router-link tag="a" :to="'/moviepages/'+item.id+'/'+item.t" v-for="item in comimgList.slice(0,8)" :key="item.id">
           <img :src="item.img" />
           <p>{{item.t}}</p>
-        </a>
+        </router-link>
 
     
       </div>
       <div>
-        <div class="main_fut">
+        <router-link  to="/future" class="main_fut">
           <b>即将上映({{comingmove}})</b>
           <img
             src="https://static1.mtime.cn/html5/20191022151144/images/2014/i-tmore.png"
             style="transform:rotate(270deg);"
           />
-        </div>
+        </router-link>
       </div>
     </div>
 
@@ -75,9 +75,6 @@ export default {
       newslist:[]
     };
   },
-  created() {
-    console.log("1");
-  },
   methods: {},
   async created() {
     let data = await movienowApi();
@@ -87,7 +84,7 @@ export default {
     this.comimgList = data.ms;
     this.comingmove = data.totalComingMovie;
     this.newslist = news.data.list;
-    console.log(this.newslist);
+    console.log(this.comimgList);
   }
 };
 </script>

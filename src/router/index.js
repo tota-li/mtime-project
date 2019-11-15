@@ -5,6 +5,8 @@ import tickets from './tickets'
 import shop from './shop'
 import mine from './mine'
 import hotlist from './hotlist'
+import future from './future'
+import moviepages from './moivepage'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -18,7 +20,9 @@ const router = new VueRouter({
     tickets,
     shop,
     mine,
-    hotlist
+    hotlist,
+    future,
+    moviepages
   ]
 })
 

@@ -4,7 +4,7 @@ module.exports={
     devServer:{
     proxy:{
             "/Service":{
-                target:"http://m.mtime.cn",
+                target:"https://m.mtime.cn",
                 changeOrigin:true
             },
             "/article":{
