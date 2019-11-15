@@ -1,38 +1,41 @@
 <template>
   <div id="app">
-    <TabBar v-if="$route.meta.flag"/>
-   <keep-alive>
-     <router-view>
-       
-     </router-view>
-   </keep-alive>
-   
+     <TabBar v-if="$route.meta.flag"/>
+    <keep-alive >
+    <router-view></router-view>
+    </keep-alive>
+    <Footer/>
   </div>
 </template>
-
 <script>
-import TabBar from "@common/tabBar"
+import TabBar from "@common/components/tabBar";
+import Footer from "@common/components/Footer";
 export default {
-  name:"App",
-  components:{
-    TabBar
+  name: "App",
+  components: {
+    TabBar,
+    Footer
   }
-}
+};
 </script>
 
-<style lang="scss">
-*{
-  margin: 0;
-  padding: 0;
-}
-li{
-  list-style: none;
-}
-a{
-  text-decoration: none
-}
-#app{
-  height: 100%;
-}
+<style>
+ * {
+        padding: 0;
+        margin: 0;
+    }
 
+    a {
+        text-decoration: none;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+  #app{
+    height: 100%;
+    width: 100%
+  }
+ *{overflow-x: hidden;}
 </style>
