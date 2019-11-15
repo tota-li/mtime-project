@@ -1,5 +1,5 @@
 <template>
-    <div class="jiaju"> 
+    <div class="fushi"> 
         <div class="nav">
 			<v-touch @tap="handleBack()" class="bc"><span>
 				&lt;
@@ -21,35 +21,7 @@
         <div class="banner_right"><input type="text" placeholder="筛选影院"></div>
         <div class="banner-p"><p>搜索</p></div>
     </div> 
-		<!-- <div class="nav2">
-			<ul >
-				<li>
-					<select>
-						<option value="综合排序">综合排序</option>
-						<option value="价格从低到高">价格从低到高</option>
-						<option value="加个从高到低">加个从高到低</option>
-						<option value="好评率从高到低">好评率从高到低</option>
-						<option value="销量从高到低">销量从高到低</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">神奇动物在哪里</option>
-						<option value="加个从高到低">复仇者联盟</option>
-						<option value="好评率从高到低">魔兽</option>
-						<option value="销量从高到低">权力的游戏</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">玩具类型</option>
-					</select>
-				</li>
-			</ul>
-	
-		</div> -->
+		
 		
 <!--content-->
 
@@ -75,16 +47,16 @@
 </template>
 
 <script>
-import {jiajulistApi} from "@api/jiaju"
+import {manweilistApi} from "@api/manwei"
     export default {
-		name:"jiaju",
+		name:"manwei",
 		data(){
 			return{
 				goodsList:[]
 			}
 		},
 		async created(){
-			let data =await jiajulistApi();
+			let data =await manweilistApi();
 			console.log(data);
 			this.goodsList=data.content.goods.goodsList
 			console.log(this.goodsList)
@@ -107,7 +79,7 @@ import {jiajulistApi} from "@api/jiaju"
 </script>
 
 <style lang="scss" scoped>
-    li{
+   li{
 			list-style: none;
 		}
 			/*nav*/

@@ -24,13 +24,13 @@
 			<div class="content">
 				<ul>
 					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161133.99290860.jpg"/><p>模玩</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161141.82690725.jpg"/><p>数码</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161148.25620959.jpg" alt="" /><p>服饰</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161155.82939104.jpg"/><p>家居</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161224.10155577.jpg"/><p>星战</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F07%2F23%2F142033.71638312.jpg"/><p>漫威</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161315.97010262.jpg"/><p>新品</p></router-link>
-					<router-link tag="a" to="/mowan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161342.70896250.jpg"/><p>全部</p></router-link>
+					<router-link tag="a" to="/shuma"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161141.82690725.jpg"/><p>数码</p></router-link>
+					<router-link tag="a" to="/fushi"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161148.25620959.jpg" alt="" /><p>服饰</p></router-link>
+					<router-link tag="a" to="/jiaju"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161155.82939104.jpg"/><p>家居</p></router-link>
+					<router-link tag="a" to="/xingzhan"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161224.10155577.jpg"/><p>星战</p></router-link>
+					<router-link tag="a" to="/manwei"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2019%2F07%2F23%2F142033.71638312.jpg"/><p>漫威</p></router-link>
+					<router-link tag="a" to="/xinpin"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161315.97010262.jpg"/><p>新品</p></router-link>
+					<router-link tag="a" to="/quanbu"><img src="//imgproxy.mtime.cn/get.ashx?uri=http%3A%2F%2Fimg5.mtime.cn%2Fmg%2F2017%2F02%2F07%2F161342.70896250.jpg"/><p>全部</p></router-link>
 				</ul>
 			</div>
 		

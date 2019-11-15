@@ -107,7 +107,7 @@ import {mowanlistApi} from "@api/shopping"
 </script>
 
 <style lang="scss" scoped>
-    li{
+   li{
 			list-style: none;
 		}
 			/*nav*/
@@ -253,6 +253,7 @@ import {mowanlistApi} from "@api/shopping"
 				display: flex;
 				flex-direction:column ;
 				margin-bottom: 6px;
+				position: relative;
 			}
 			.content ul li i{
 				font-size:16px;
@@ -265,7 +266,7 @@ import {mowanlistApi} from "@api/shopping"
 				width: 100%;
 			}
 			.content ul li p{
-				
+				height:70px;
 				font-size: 14px;
 				background: #FFFFFF;
 			}
@@ -285,5 +286,8 @@ import {mowanlistApi} from "@api/shopping"
 				color: #FF8600;
 				margin-left: 3px;
 				font-size:20px;
+				position: absolute;
+				left: 0px;
+				bottom: 2px
 			}
 </style>

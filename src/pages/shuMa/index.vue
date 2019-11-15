@@ -1,5 +1,6 @@
 <template>
-    <div class="jiaju"> 
+    <div class="shuma">
+  
         <div class="nav">
 			<v-touch @tap="handleBack()" class="bc"><span>
 				&lt;
@@ -19,41 +20,11 @@
 		<div class="banner">
         <div class="banner_left"><span>北京</span><img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_city.png" alt=""></div>
         <div class="banner_right"><input type="text" placeholder="筛选影院"></div>
-        <div class="banner-p"><p>搜索</p></div>
-    </div> 
-		<!-- <div class="nav2">
-			<ul >
-				<li>
-					<select>
-						<option value="综合排序">综合排序</option>
-						<option value="价格从低到高">价格从低到高</option>
-						<option value="加个从高到低">加个从高到低</option>
-						<option value="好评率从高到低">好评率从高到低</option>
-						<option value="销量从高到低">销量从高到低</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">神奇动物在哪里</option>
-						<option value="加个从高到低">复仇者联盟</option>
-						<option value="好评率从高到低">魔兽</option>
-						<option value="销量从高到低">权力的游戏</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">玩具类型</option>
-					</select>
-				</li>
-			</ul>
-	
-		</div> -->
-		
-<!--content-->
+        <div class="banner-p"><p>搜索</p></div></div>
+   <!-- content -->
+   
+   <div class="content">
 
-		<div class="content">
 			<ul>
 				<li v-for="(item,index) in goodsList" :key=index>
 					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >{{item.iconText}}</i>
@@ -69,22 +40,22 @@
 				</li>
 			
 			</ul>
-			
-		</div>
+   </div>
+		
     </div>
 </template>
 
 <script>
-import {jiajulistApi} from "@api/jiaju"
+import {shumalistApi} from "@api/shuma"
     export default {
-		name:"jiaju",
+		name:"shuma",
 		data(){
 			return{
 				goodsList:[]
 			}
 		},
 		async created(){
-			let data =await jiajulistApi();
+			let data =await shumalistApi();
 			console.log(data);
 			this.goodsList=data.content.goods.goodsList
 			console.log(this.goodsList)
@@ -104,10 +75,11 @@ import {jiajulistApi} from "@api/jiaju"
 			}
 		}
     }
+    
 </script>
 
 <style lang="scss" scoped>
-    li{
+  li{
 			list-style: none;
 		}
 			/*nav*/

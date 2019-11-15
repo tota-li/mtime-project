@@ -5,6 +5,13 @@ import ticket from "./ticket"
 import shopping from "./shopping"
 import mine from "./mine"
 import mowan from "./mowan"
+import shuma from "./shuma"
+import fushi from "./fushi"
+import jiaju from "./jiaju"
+import manwei from "./manwei"
+import quanbu from "./quanbu"
+import xinpin from "./xinpin"
+import xingzhan from "./xingzhan"
 
 Vue.use(VueRouter);
 
@@ -35,8 +42,14 @@ const router = new VueRouter({
     ticket,
     shopping,
     mowan,
-    mine
-    
+    mine,
+    shuma,
+    fushi,
+    jiaju,
+    manwei,
+    quanbu,
+    xinpin,
+    xingzhan
   ]
 })
 
