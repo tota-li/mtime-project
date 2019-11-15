@@ -21,40 +21,11 @@
         <div class="banner_right"><input type="text" placeholder="筛选影院"></div>
         <div class="banner-p"><p>搜索</p></div>
     </div> 
-		<!-- <div class="nav2">
-			<ul >
-				<li>
-					<select>
-						<option value="综合排序">综合排序</option>
-						<option value="价格从低到高">价格从低到高</option>
-						<option value="加个从高到低">加个从高到低</option>
-						<option value="好评率从高到低">好评率从高到低</option>
-						<option value="销量从高到低">销量从高到低</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">神奇动物在哪里</option>
-						<option value="加个从高到低">复仇者联盟</option>
-						<option value="好评率从高到低">魔兽</option>
-						<option value="销量从高到低">权力的游戏</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">玩具类型</option>
-					</select>
-				</li>
-			</ul>
-	
-		</div> -->
 		
 <!--content-->
-
-		<div class="content">
-			<ul>
+		<div ref="wrapper" class="wrappers">
+		<div class="content" >
+			<ul >
 				<li v-for="(item,index) in goodsList" :key=index>
 					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >{{item.iconText}}</i>
 					<img :src="item.imageSrc"/>
@@ -70,12 +41,13 @@
 			
 			</ul>
 			
-		</div>
+		</div></div>
     </div>
 </template>
 
 <script>
 import {mowanlistApi} from "@api/shopping"
+import BScroll from 'better-scroll'
     export default {
 		name:"mowan",
 		data(){
@@ -90,6 +62,7 @@ import {mowanlistApi} from "@api/shopping"
 			console.log(this.goodsList)
 		
 		},
+		
 		filters:{
 		numFilter (value) {
     	// 截取当前数据到小数点后两位
@@ -102,13 +75,20 @@ import {mowanlistApi} from "@api/shopping"
 			handleBack(){
 				this.$router.back();
 			}
+		},
+		mounted(){
+			new BScroll(this.$refs.wrapper)
 		}
+		
     }
 </script>
 
 <style lang="scss" scoped>
    li{
 			list-style: none;
+		}
+		.mowan{
+			position: relative;
 		}
 			/*nav*/
 			.nav {
@@ -166,6 +146,7 @@ import {mowanlistApi} from "@api/shopping"
     justify-content: space-around;
     align-items: center;
     flex-shrink: 0;
+	
 }
 .banner_left span{
     font-size:16PX
@@ -193,48 +174,17 @@ import {mowanlistApi} from "@api/shopping"
     border:1px solid #fff;
     border-radius: 5px;
 }
-
-			// .nav2{
-			// 	width: 100%;
-			// 	height: 40rem;
-			// 	display: flex;
-			// 	justify-content: space-between;
-			// 	align-items: center;
-			// }
-			// .nav2 ul{
-			// 	width: 100%;
-			// 	height:100%;
-			// 	display: flex;
-			// 	justify-content: space-between;
-			// 	align-items: center;
-			// 	background: #fff;
-			// }
-			// .nav2 li{
-			// 	width: 30%;
-				
-			// 	display: flex;
-			// }
-			// .nav2 li select{
-			// 	width: 100%;
-			// 	margin-left:18px;
-			// 	border: none;
-			// 	font-size: 40px;
-			// 	border-right: 1px solid;
-			// }
-			// .nav2 li:nth-child(3) select{
-			// 	border: none;
-			// }
-			// .nav2 li select option{
-			// 	font-size:16px;
-			// 	margin-right:18px;
-				
-			// 	}
 				
 				/*content*/
-				
+			.wrappers{
+				width: 100%;
+				height: 500px;
+				overflow: hidden;
+			
+			}	
 			.content{
 				width: 100%;
-				height: auto;
+				
 				background: #eee;
 				display: flex;
 				padding-top: 10px;

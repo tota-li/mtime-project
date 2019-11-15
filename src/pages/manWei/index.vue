@@ -25,8 +25,9 @@
 		
 <!--content-->
 
-		<div class="content">
-			<ul>
+			<div ref="wrapper" class="wrappers">
+		<div class="content" >
+			<ul >
 				<li v-for="(item,index) in goodsList" :key=index>
 					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >{{item.iconText}}</i>
 					<img :src="item.imageSrc"/>
@@ -42,7 +43,7 @@
 			
 			</ul>
 			
-		</div>
+		</div></div>
     </div>
 </template>
 

@@ -40,7 +40,7 @@ export default {
 <style>
 .title {
   background: #1c2635;
-  height: 3.625rem;
+  height: 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;

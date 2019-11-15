@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="footer">
     <div class="footer_other">
       <router-link tag="li" v-for="item in footer" :key="item.id" :to="item.path">
           {{item.text}}
@@ -40,6 +40,11 @@
 </script>
 
 <style>
+.footer{
+  width: 100%;
+ position: relative;
+ 
+}
 .footer_other {
   height: 3.3125rem;
   display: flex;
