@@ -23,9 +23,9 @@
         <div class="banner-p"><p>搜索</p></div></div>
    <!-- content -->
    
-   <div class="content">
-
-			<ul>
+  	<BscrollB ref="scroll">
+		<div class="content" >
+			<ul >
 				<li v-for="(item,index) in goodsList" :key=index>
 					<i style="background:#25ACBD; display: inline-block; color: #FFFFFF; " >{{item.iconText}}</i>
 					<img :src="item.imageSrc"/>
@@ -40,13 +40,15 @@
 				</li>
 			
 			</ul>
-   </div>
-		
+			
+		</div>
+		</BscrollB>
     </div>
 </template>
 
 <script>
 import {shumalistApi} from "@api/shuma"
+import BScroll from "better-scroll"
     export default {
 		name:"shuma",
 		data(){
@@ -54,13 +56,11 @@ import {shumalistApi} from "@api/shuma"
 				goodsList:[]
 			}
 		},
-		async created(){
-			let data =await shumalistApi();
-			console.log(data);
-			this.goodsList=data.content.goods.goodsList
-			console.log(this.goodsList)
+created(){
+			this.handlegetList();
 		
 		},
+		
 		filters:{
 		numFilter (value) {
     	// 截取当前数据到小数点后两位
@@ -72,8 +72,38 @@ import {shumalistApi} from "@api/shuma"
 		methods:{
 			handleBack(){
 				this.$router.back();
+			},
+			async handlegetList(){
+			let data =await shumalistApi();
+			this.goodsList=data.content.goods.goodsList
 			}
+
+		},
+		
+			
+		
+		watch:{
+			goodsList(){
+				this.$refs.scroll.handleRefreshDown();
+				
+			},
+			goodsList(){
+				this.$refs.scroll.handlefinishPullUp();
+				
+			},
+		},
+		mounted(){
+			this.$refs.scroll.handleScroll()
+			this.$refs.scroll.handlepullingDown(()=>{
+				this.handlegetList();
+			});
+			this.$refs.scroll.handlepullingUp(()=>{
+				this.handlegetList();
+			})
+
 		}
+		
+		
     }
     
 </script>
@@ -166,43 +196,14 @@ import {shumalistApi} from "@api/shuma"
     border-radius: 5px;
 }
 
-			// .nav2{
-			// 	width: 100%;
-			// 	height: 40rem;
-			// 	display: flex;
-			// 	justify-content: space-between;
-			// 	align-items: center;
-			// }
-			// .nav2 ul{
-			// 	width: 100%;
-			// 	height:100%;
-			// 	display: flex;
-			// 	justify-content: space-between;
-			// 	align-items: center;
-			// 	background: #fff;
-			// }
-			// .nav2 li{
-			// 	width: 30%;
-				
-			// 	display: flex;
-			// }
-			// .nav2 li select{
-			// 	width: 100%;
-			// 	margin-left:18px;
-			// 	border: none;
-			// 	font-size: 40px;
-			// 	border-right: 1px solid;
-			// }
-			// .nav2 li:nth-child(3) select{
-			// 	border: none;
-			// }
-			// .nav2 li select option{
-			// 	font-size:16px;
-			// 	margin-right:18px;
-				
-			// 	}
-				
+		
 				/*content*/
+				.wrappers{
+				width: 100%;
+				height: 500px;
+				overflow: hidden;
+			
+			}	
 				
 			.content{
 				width: 100%;

@@ -21,38 +21,10 @@
         <div class="banner_right"><input type="text" placeholder="筛选影院"></div>
         <div class="banner-p"><p>搜索</p></div>
     </div> 
-		<!-- <div class="nav2">
-			<ul >
-				<li>
-					<select>
-						<option value="综合排序">综合排序</option>
-						<option value="价格从低到高">价格从低到高</option>
-						<option value="加个从高到低">加个从高到低</option>
-						<option value="好评率从高到低">好评率从高到低</option>
-						<option value="销量从高到低">销量从高到低</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">神奇动物在哪里</option>
-						<option value="加个从高到低">复仇者联盟</option>
-						<option value="好评率从高到低">魔兽</option>
-						<option value="销量从高到低">权力的游戏</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="综合排序">全部</option>
-						<option value="价格从低到高">玩具类型</option>
-					</select>
-				</li>
-			</ul>
-	
-		</div> -->
+		
 		
 <!--content-->
-
+	<BscrollB ref="scroll">
 		<div class="content">
 			<ul>
 				<li v-for="(item,index) in goodsList" :key=index>
@@ -69,12 +41,13 @@
 				</li>
 			
 			</ul>
-			
 		</div>
+		</BscrollB>
     </div>
 </template>
 
 <script>
+import BScroll from "better-scroll"
 import {jiajulistApi} from "@api/jiaju"
     export default {
 		name:"jiaju",
@@ -83,13 +56,11 @@ import {jiajulistApi} from "@api/jiaju"
 				goodsList:[]
 			}
 		},
-		async created(){
-			let data =await jiajulistApi();
-			console.log(data);
-			this.goodsList=data.content.goods.goodsList
-			console.log(this.goodsList)
+created(){
+			this.handlegetList();
 		
 		},
+		
 		filters:{
 		numFilter (value) {
     	// 截取当前数据到小数点后两位
@@ -101,8 +72,38 @@ import {jiajulistApi} from "@api/jiaju"
 		methods:{
 			handleBack(){
 				this.$router.back();
+			},
+			async handlegetList(){
+			let data =await jiajulistApi();
+			this.goodsList=data.content.goods.goodsList
 			}
+
+		},
+		
+			
+		
+		watch:{
+			goodsList(){
+				this.$refs.scroll.handleRefreshDown();
+				
+			},
+			goodsList(){
+				this.$refs.scroll.handlefinishPullUp();
+				
+			},
+		},
+		mounted(){
+			this.$refs.scroll.handleScroll()
+			this.$refs.scroll.handlepullingDown(()=>{
+				this.handlegetList();
+			});
+			this.$refs.scroll.handlepullingUp(()=>{
+				this.handlegetList();
+			})
+
 		}
+		
+		
     }
 </script>
 
@@ -231,6 +232,12 @@ import {jiajulistApi} from "@api/jiaju"
 			// 	}
 				
 				/*content*/
+				.wrappers{
+				width: 100%;
+				height: 500px;
+				overflow: hidden;
+			
+			}	
 				
 			.content{
 				width: 100%;

@@ -23,7 +23,8 @@
     </div> 
 		
 <!--content-->
-		<div ref="wrapper" class="wrappers">
+		<!-- <div ref="wrapper" class="wrappers"> -->
+			<BscrollB ref="scroll">
 		<div class="content" >
 			<ul >
 				<li v-for="(item,index) in goodsList" :key=index>
@@ -41,13 +42,14 @@
 			
 			</ul>
 			
-		</div></div>
-    </div>
+		</div></BscrollB>
+		</div>
+    <!-- </div> -->
 </template>
 
 <script>
 import {mowanlistApi} from "@api/shopping"
-import BScroll from 'better-scroll'
+// import BScroll from "better-scroll"
     export default {
 		name:"mowan",
 		data(){
@@ -55,11 +57,8 @@ import BScroll from 'better-scroll'
 				goodsList:[]
 			}
 		},
-		async created(){
-			let data =await mowanlistApi();
-			console.log(data);
-			this.goodsList=data.content.goods.goodsList
-			console.log(this.goodsList)
+		 created(){
+			this.handlegetList();
 		
 		},
 		
@@ -74,11 +73,37 @@ import BScroll from 'better-scroll'
 		methods:{
 			handleBack(){
 				this.$router.back();
+			},
+			async handlegetList(){
+			let data =await mowanlistApi();
+			this.goodsList=data.content.goods.goodsList
 			}
+
+		},
+		
+			
+		
+		watch:{
+			goodsList(){
+				this.$refs.scroll.handleRefreshDown();
+				
+			},
+			goodsList(){
+				this.$refs.scroll.handlefinishPullUp();
+				
+			},
 		},
 		mounted(){
-			new BScroll(this.$refs.wrapper)
+			this.$refs.scroll.handleScroll()
+			this.$refs.scroll.handlepullingDown(()=>{
+				this.handlegetList();
+			});
+			this.$refs.scroll.handlepullingUp(()=>{
+				this.handlegetList();
+			})
+
 		}
+		
 		
     }
 </script>

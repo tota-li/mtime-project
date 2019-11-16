@@ -24,7 +24,7 @@
 		
 		
 <!--content-->
-
+	<BscrollB ref="scroll">
 		<div class="content">
 			<ul>
 				<li v-for="(item,index) in goodsList" :key=index>
@@ -41,13 +41,14 @@
 				</li>
 			
 			</ul>
-			
 		</div>
+		</BscrollB>
     </div>
 </template>
 
 <script>
 import {xinpinlistApi} from "@api/xinpin"
+import BScroll from "better-scroll"
     export default {
 		name:"xinpin",
 		data(){
@@ -55,13 +56,11 @@ import {xinpinlistApi} from "@api/xinpin"
 				goodsList:[]
 			}
 		},
-		async created(){
-			let data =await xinpinlistApi();
-			console.log(data);
-			this.goodsList=data.content.goods.goodsList
-			console.log(this.goodsList)
+created(){
+			this.handlegetList();
 		
 		},
+		
 		filters:{
 		numFilter (value) {
     	// 截取当前数据到小数点后两位
@@ -73,8 +72,38 @@ import {xinpinlistApi} from "@api/xinpin"
 		methods:{
 			handleBack(){
 				this.$router.back();
+			},
+			async handlegetList(){
+			let data =await xinpinlistApi();
+			this.goodsList=data.content.goods.goodsList
 			}
+
+		},
+		
+			
+		
+		watch:{
+			goodsList(){
+				this.$refs.scroll.handleRefreshDown();
+				
+			},
+			goodsList(){
+				this.$refs.scroll.handlefinishPullUp();
+				
+			},
+		},
+		mounted(){
+			this.$refs.scroll.handleScroll()
+			this.$refs.scroll.handlepullingDown(()=>{
+				this.handlegetList();
+			});
+			this.$refs.scroll.handlepullingUp(()=>{
+				this.handlegetList();
+			})
+
 		}
+		
+		
     }
 </script>
 
@@ -203,10 +232,16 @@ import {xinpinlistApi} from "@api/xinpin"
 			// 	}
 				
 				/*content*/
+				.wrappers{
+				width: 100%;
+				height: 500px;
+				overflow: hidden;
+			
+			}	
 				
 			.content{
 				width: 100%;
-				height: auto;
+				
 				background: #eee;
 				display: flex;
 				padding-top: 10px;

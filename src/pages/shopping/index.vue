@@ -122,6 +122,7 @@ html {
 				flex-wrap: wrap;
 				flex-direction: column;
 				justify-content: center;
+				color: #000;
 			}
 			.content p{
 				font-size: 16px;

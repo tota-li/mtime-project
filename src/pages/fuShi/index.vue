@@ -24,7 +24,7 @@
 		
 		
 <!--content-->
-
+	<BscrollB ref="scroll">
 		<div class="content">
 			<ul>
 				<li v-for="(item,index) in goodsList" :key=index>
@@ -41,13 +41,15 @@
 				</li>
 			
 			</ul>
-			
 		</div>
+		
+    </BscrollB>
     </div>
 </template>
 
 <script>
 import {fushilistApi} from "@api/fushi"
+import BScroll from "better-scroll"
     export default {
 		name:"fushi",
 		data(){
@@ -55,13 +57,11 @@ import {fushilistApi} from "@api/fushi"
 				goodsList:[]
 			}
 		},
-		async created(){
-			let data =await fushilistApi();
-			console.log(data);
-			this.goodsList=data.content.goods.goodsList
-			console.log(this.goodsList)
+created(){
+			this.handlegetList();
 		
 		},
+		
 		filters:{
 		numFilter (value) {
     	// 截取当前数据到小数点后两位
@@ -73,8 +73,38 @@ import {fushilistApi} from "@api/fushi"
 		methods:{
 			handleBack(){
 				this.$router.back();
+			},
+			async handlegetList(){
+			let data =await fushilistApi();
+			this.goodsList=data.content.goods.goodsList
 			}
+
+		},
+		
+			
+		
+		watch:{
+			goodsList(){
+				this.$refs.scroll.handleRefreshDown();
+				
+			},
+			goodsList(){
+				this.$refs.scroll.handlefinishPullUp();
+				
+			},
+		},
+		mounted(){
+			this.$refs.scroll.handleScroll()
+			this.$refs.scroll.handlepullingDown(()=>{
+				this.handlegetList();
+			});
+			this.$refs.scroll.handlepullingUp(()=>{
+				this.handlegetList();
+			})
+
 		}
+		
+		
     }
 </script>
 
@@ -203,6 +233,12 @@ import {fushilistApi} from "@api/fushi"
 			// 	}
 				
 				/*content*/
+				.wrappers{
+				width: 100%;
+				height: 500px;
+				overflow: hidden;
+			
+			}	
 				
 			.content{
 				width: 100%;
