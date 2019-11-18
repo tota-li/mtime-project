@@ -53,7 +53,8 @@ import BScroll from "better-scroll"
 		name:"shuma",
 		data(){
 			return{
-				goodsList:[]
+				goodsList:[],
+				n:1
 			}
 		},
 created(){
@@ -73,9 +74,10 @@ created(){
 			handleBack(){
 				this.$router.back();
 			},
-			async handlegetList(){
-			let data =await shumalistApi();
-			this.goodsList=data.content.goods.goodsList
+			async handlegetList(pz){
+			let data =await shumalistApi(pz);
+			for(var value of data.content.goods.goodsList)
+			this.goodsList.push(value)
 			}
 
 		},
@@ -98,7 +100,7 @@ created(){
 				this.handlegetList();
 			});
 			this.$refs.scroll.handlepullingUp(()=>{
-				this.handlegetList();
+				this.handlegetList(++this.n);
 			})
 
 		}

@@ -54,7 +54,9 @@ import {mowanlistApi} from "@api/shopping"
 		name:"mowan",
 		data(){
 			return{
-				goodsList:[]
+				goodsList:[],
+				n:1
+
 			}
 		},
 		 created(){
@@ -74,9 +76,12 @@ import {mowanlistApi} from "@api/shopping"
 			handleBack(){
 				this.$router.back();
 			},
-			async handlegetList(){
-			let data =await mowanlistApi();
-			this.goodsList=data.content.goods.goodsList
+			async handlegetList(pz){
+			let data =await mowanlistApi(pz);
+			for(var value of data.content.goods.goodsList){
+				this.goodsList.push(value)
+			}
+			
 			}
 
 		},
@@ -99,7 +104,7 @@ import {mowanlistApi} from "@api/shopping"
 				this.handlegetList();
 			});
 			this.$refs.scroll.handlepullingUp(()=>{
-				this.handlegetList();
+				this.handlegetList(++this.n);
 			})
 
 		}
