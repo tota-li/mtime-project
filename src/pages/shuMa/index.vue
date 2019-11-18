@@ -1,5 +1,6 @@
 <template>
-    <div class="mowan"> 
+    <div class="shuma">
+  
         <div class="nav">
 			<v-touch @tap="handleBack()" class="bc"><span>
 				&lt;
@@ -19,12 +20,10 @@
 		<div class="banner">
         <div class="banner_left"><span>北京</span><img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_city.png" alt=""></div>
         <div class="banner_right"><input type="text" placeholder="筛选影院"></div>
-        <div class="banner-p"><p>搜索</p></div>
-    </div> 
-		
-<!--content-->
-		<!-- <div ref="wrapper" class="wrappers"> -->
-			<BscrollB ref="scroll">
+        <div class="banner-p"><p>搜索</p></div></div>
+   <!-- content -->
+   
+  	<BscrollB ref="scroll">
 		<div class="content" >
 			<ul >
 				<li v-for="(item,index) in goodsList" :key=index>
@@ -42,22 +41,22 @@
 			
 			</ul>
 			
-		</div></BscrollB>
 		</div>
-    <!-- </div> -->
+		</BscrollB>
+    </div>
 </template>
 
 <script>
-import {mowanlistApi} from "@api/shopping"
-// import BScroll from "better-scroll"
+import {shumalistApi} from "@api/shuma"
+import BScroll from "better-scroll"
     export default {
-		name:"mowan",
+		name:"shuma",
 		data(){
 			return{
 				goodsList:[]
 			}
 		},
-		 created(){
+created(){
 			this.handlegetList();
 		
 		},
@@ -75,7 +74,7 @@ import {mowanlistApi} from "@api/shopping"
 				this.$router.back();
 			},
 			async handlegetList(){
-			let data =await mowanlistApi();
+			let data =await shumalistApi();
 			this.goodsList=data.content.goods.goodsList
 			}
 
@@ -106,14 +105,12 @@ import {mowanlistApi} from "@api/shopping"
 		
 		
     }
+    
 </script>
 
 <style lang="scss" scoped>
-   li{
+  li{
 			list-style: none;
-		}
-		.mowan{
-			position: relative;
 		}
 			/*nav*/
 			.nav {
@@ -171,7 +168,6 @@ import {mowanlistApi} from "@api/shopping"
     justify-content: space-around;
     align-items: center;
     flex-shrink: 0;
-	
 }
 .banner_left span{
     font-size:16PX
@@ -199,17 +195,19 @@ import {mowanlistApi} from "@api/shopping"
     border:1px solid #fff;
     border-radius: 5px;
 }
-				
+
+		
 				/*content*/
-			.wrappers{
+				.wrappers{
 				width: 100%;
 				height: 500px;
 				overflow: hidden;
 			
 			}	
+				
 			.content{
 				width: 100%;
-				
+				height: auto;
 				background: #eee;
 				display: flex;
 				padding-top: 10px;

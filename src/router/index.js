@@ -10,6 +10,17 @@ import moviepages from './moivepage'
 import shopping from "./shopping"
 import mowan from "./mowan"
 import address from "./address"
+import shuma from "./shuma"
+import fushi from "./fushi"
+import jiaju from "./jiaju"
+import manwei from "./manwei"
+import quanbu from "./quanbu"
+import xinpin from "./xinpin"
+import xingzhan from "./xingzhan"
+
+Vue.use(VueRouter);
+
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -28,12 +39,18 @@ const router = new VueRouter({
     shopping,
     mowan,
     moviepages,
-    address
+    address,
+    mine,
+    shuma,
+    fushi,
+    jiaju,
+    manwei,
+    quanbu,
+    xinpin,
+    xingzhan
   ]
 })
 
-// const router = new VueRouter({
-//   router
-// })
+
 
 export default router

@@ -1,5 +1,5 @@
 <template>
-    <div class="mowan"> 
+    <div class="fushi"> 
         <div class="nav">
 			<v-touch @tap="handleBack()" class="bc"><span>
 				&lt;
@@ -22,9 +22,10 @@
         <div class="banner-p"><p>搜索</p></div>
     </div> 
 		
+		
 <!--content-->
-		<!-- <div ref="wrapper" class="wrappers"> -->
-			<BscrollB ref="scroll">
+
+		<BscrollB ref="scroll">
 		<div class="content" >
 			<ul >
 				<li v-for="(item,index) in goodsList" :key=index>
@@ -41,23 +42,22 @@
 				</li>
 			
 			</ul>
-			
-		</div></BscrollB>
-		</div>
-    <!-- </div> -->
+		</div>	
+		</BscrollB>
+    </div>
 </template>
 
 <script>
-import {mowanlistApi} from "@api/shopping"
-// import BScroll from "better-scroll"
+import {manweilistApi} from "@api/manwei"
+import BScroll from "better-scroll"
     export default {
-		name:"mowan",
+		name:"manwei",
 		data(){
 			return{
 				goodsList:[]
 			}
 		},
-		 created(){
+created(){
 			this.handlegetList();
 		
 		},
@@ -75,7 +75,7 @@ import {mowanlistApi} from "@api/shopping"
 				this.$router.back();
 			},
 			async handlegetList(){
-			let data =await mowanlistApi();
+			let data =await manweilistApi();
 			this.goodsList=data.content.goods.goodsList
 			}
 
@@ -111,9 +111,6 @@ import {mowanlistApi} from "@api/shopping"
 <style lang="scss" scoped>
    li{
 			list-style: none;
-		}
-		.mowan{
-			position: relative;
 		}
 			/*nav*/
 			.nav {
@@ -171,7 +168,6 @@ import {mowanlistApi} from "@api/shopping"
     justify-content: space-around;
     align-items: center;
     flex-shrink: 0;
-	
 }
 .banner_left span{
     font-size:16PX
@@ -199,9 +195,46 @@ import {mowanlistApi} from "@api/shopping"
     border:1px solid #fff;
     border-radius: 5px;
 }
+
+			// .nav2{
+			// 	width: 100%;
+			// 	height: 40rem;
+			// 	display: flex;
+			// 	justify-content: space-between;
+			// 	align-items: center;
+			// }
+			// .nav2 ul{
+			// 	width: 100%;
+			// 	height:100%;
+			// 	display: flex;
+			// 	justify-content: space-between;
+			// 	align-items: center;
+			// 	background: #fff;
+			// }
+			// .nav2 li{
+			// 	width: 30%;
+				
+			// 	display: flex;
+			// }
+			// .nav2 li select{
+			// 	width: 100%;
+			// 	margin-left:18px;
+			// 	border: none;
+			// 	font-size: 40px;
+			// 	border-right: 1px solid;
+			// }
+			// .nav2 li:nth-child(3) select{
+			// 	border: none;
+			// }
+			// .nav2 li select option{
+			// 	font-size:16px;
+			// 	margin-right:18px;
+				
+			// 	}
 				
 				/*content*/
-			.wrappers{
+				
+				.wrappers{
 				width: 100%;
 				height: 500px;
 				overflow: hidden;
@@ -209,7 +242,7 @@ import {mowanlistApi} from "@api/shopping"
 			}	
 			.content{
 				width: 100%;
-				
+				height: auto;
 				background: #eee;
 				display: flex;
 				padding-top: 10px;
