@@ -8,7 +8,7 @@
     </div>
 
 
-<div v-for="item in newslist" :key='item'>
+<div v-for="item in newslist" :key='item.id'>
 
     <div class="bo" :key="item.id" v-if="item.styleType==2">
       <div class="img_box">

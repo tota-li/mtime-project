@@ -34,3 +34,21 @@ export const moivefuture =()=> http({
     }
 
 })   
+export const moivepages =(movieId)=> http({
+    method:"get",
+    url:"/Service/callback.mi/Movie/Detail.api",
+    data:{
+        movieId:movieId,
+        locationId:291,
+        t:201911152015243484
+    }
+    
+})   
+export const ticket =(cityId)=> http({
+    method:"get",
+    url:"/api/proxy/ticket/onlineCinemasByCity.api",
+    data:{
+        locationId:cityId
+    }
+
+})   

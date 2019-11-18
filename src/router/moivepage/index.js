@@ -1,5 +1,5 @@
 export default {
-    path:"/moviepages",
+    path:"/moviepages/:id/:nm",
     component:_=>import("@pages/moviepages"),
     name:"moviepages",
     meta:{

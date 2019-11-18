@@ -9,6 +9,7 @@ import future from './future'
 import moviepages from './moivepage'
 import shopping from "./shopping"
 import mowan from "./mowan"
+import address from "./address"
 import shuma from "./shuma"
 import fushi from "./fushi"
 import jiaju from "./jiaju"
@@ -37,6 +38,8 @@ const router = new VueRouter({
     future,
     shopping,
     mowan,
+    moviepages,
+    address,
     mine,
     shuma,
     fushi,
