@@ -2,7 +2,7 @@
   <div>
     <div class="seach">
       <div>
-        <b>北京</b>
+        <router-link tag="b" :to="'/address/'">北京</router-link>
         <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_city.png" />
       </div>
       <div>

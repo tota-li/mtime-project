@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="body" v-for="item in hotList" :key="item.id">
+    <router-link :to="'/moviepages/'+item.id+'/'+item.t" tag="div" class="body" v-for="item in hotList" :key="item.id">
       <div class="body-left">
         <img
           :src="item.img"
@@ -34,7 +34,8 @@
           <a href>购票</a>
         </div>
       </div>
-    </div>
+    </router-link>
+
   </div>
 </template>
 

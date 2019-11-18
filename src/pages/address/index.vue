@@ -2,7 +2,7 @@
   <div>
     <div class="banner">
       <div class="banner_right">
-        <input type="text" placeholder="影片/影院/影人，任你搜" />
+        <input type="text" placeholder="影片/影院/影人，任你搜" v-model="value"/>
       </div>
     </div>
     <div class="city">
@@ -30,6 +30,11 @@
 import {mapState} from "vuex"
 export default {
   name: "City",
+  data(){
+    return{
+      value:""
+    }
+  },
   created(){
     if (
       !(sessionStorage.getItem("cityList") && sessionStorage.getItem("hotCity"))
@@ -47,6 +52,11 @@ export default {
     hanleCityTo(city){
       this.$router.push("/tickets");
       this.$store.commit("city/handleUpdateCity",city)
+    }
+  },
+  watch:{
+    value(newVal){
+      console(value,'该页面尚无搜索接口')
     }
   }
  
