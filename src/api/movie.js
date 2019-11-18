@@ -44,12 +44,11 @@ export const moivepages =(movieId)=> http({
     }
     
 })   
-export const ticket =()=> http({
+export const ticket =(cityId)=> http({
     method:"get",
     url:"/api/proxy/ticket/onlineCinemasByCity.api",
     data:{
-        locationId:422,
-        _:1573830482464
+        locationId:cityId
     }
 
 })   

@@ -2,7 +2,7 @@
   <div>
     <div class="banner">
       <div class="banner_left">
-        <span>北京</span>
+          <router-link tag="span" :to="'/address/'">{{this.$store.state.city.nm}}</router-link>
         <img src="http://static1.mtime.cn/html5/20191022151144/images/2014/i_city.png" alt />
       </div>
       <div class="banner_right">
@@ -41,19 +41,19 @@
         </span>
       </div>
     </div>
-    <div class="body">
+    <div class="body" v-for="item in cinema" :key="item.id" >
       <div class="pice">
-        <span>金逸国际影城荟聚店</span>
-        <b>44</b>
+        <span>{{item.cinameName}}</span>
+        <b>{{item.showtimeCount}}</b>
         <i>元起</i>
       </div>
       <div class="adress">
-        <p>北京市大兴区欣宁大街15号7-03-122-C1</p>
+        <p>{{item.address}}</p>
       </div>
       <div class="box">
-        <li>3D</li>
-        <li>IMAX</li>
-        <li>VIP</li>
+        <li v-show="item.feature.has3D==1">3D</li>
+        <li v-show="item.feature.hasIMAX==1">IMAX</li>
+        <li v-show="item.feature.hasVIP==1">VIP</li>
       </div>
     </div>
   </div>
@@ -61,6 +61,7 @@
 
 <script>
 import { ticket } from "@api/movie";
+import {mapState} from "vuex";
 export default {
   name: "tickets",
   methods: {},
@@ -69,12 +70,17 @@ export default {
       cinema:[],
     };
   },
-  async created() {
-    // this.checkid = this.$route.params.id;
-    // console.log(this.checkid);
-    let data = await ticket();
-    // this.cinema = data;
-    console.log(data);
+   created() {
+     this.handleGetMovieList(this.$store.state.city.cityId)
+  },
+  activated() {
+    this.handleGetMovieList(this.$store.state.city.cityId)
+  },
+  methods:{
+    async handleGetMovieList(cityId){
+    let data = await ticket(cityId);
+    this.cinema = data.data.cinemaList;
+    }
   }
 };
 </script>

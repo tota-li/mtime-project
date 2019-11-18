@@ -49,6 +49,8 @@ export default {
     let datab = await moivepages(this.checkid);
     this.value = datab
     console.log(datab)
+
+    
   }
 };
 </script>

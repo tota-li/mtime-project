@@ -9,6 +9,7 @@ import future from './future'
 import moviepages from './moivepage'
 import shopping from "./shopping"
 import mowan from "./mowan"
+import address from "./address"
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -26,7 +27,8 @@ const router = new VueRouter({
     future,
     shopping,
     mowan,
-    moviepages
+    moviepages,
+    address
   ]
 })
 
